@@ -50,6 +50,6 @@ def Main():
 try:
     Main()
 except Exception as e:
-    msgbox(e)
+    msgbox(f"EXCEPTION: {e}")
 
 
