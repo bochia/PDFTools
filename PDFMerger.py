@@ -47,6 +47,9 @@ def Main():
 
     msgbox(f"Merged PDF can be found on 'Merged PDFs' folder on the desktop: {merged_pdfs_folder_path}")
 
-Main()
+try:
+    Main()
+except Exception as e:
+    msgbox(e)
 
 
