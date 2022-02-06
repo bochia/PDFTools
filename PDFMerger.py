@@ -1,23 +1,14 @@
 import easygui
 import PyPDF2
 import sys
+import PDFToolsModule
+from easygui.boxes.derived_boxes import msgbox
 import os
 
-from easygui.boxes.derived_boxes import msgbox
-
-def GetPDFFileName():
+def Main():
     request_Text = "Enter Name For Resulting PDF File"
     window_Title = "PDF Merger"
-    resulting_pdf_name = easygui.enterbox(request_Text, window_Title, str())
-    return resulting_pdf_name
-
-def CreateFolder(merged_pdfs_folder_path):
-    if not os.path.isdir(merged_pdfs_folder_path):
-        os.mkdir(merged_pdfs_folder_path)
-
-def Main():
-    # Main
-    result_pdf_Name = GetPDFFileName()
+    result_pdf_Name = easygui.enterbox(request_Text, window_Title, str())
 
     if not result_pdf_Name:
         sys.exit()
@@ -33,7 +24,7 @@ def Main():
             pdf_paths.append(pdf_path)
 
     merged_pdfs_folder_path = f"C:\\Users\\{os.getlogin()}\\Desktop\\Merged PDFs\\"
-    CreateFolder(merged_pdfs_folder_path)
+    PDFToolsModule.CreateFolderIfDoesntExist(merged_pdfs_folder_path)
 
     result_pdf_path = f"{merged_pdfs_folder_path}{result_pdf_Name}.pdf"
 
