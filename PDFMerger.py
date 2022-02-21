@@ -1,3 +1,4 @@
+#python 3.6.5
 import easygui
 import PyPDF2
 import sys
