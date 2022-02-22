@@ -14,14 +14,16 @@ def Main():
     if not result_pdf_Name:
         sys.exit()
 
-    pdf_path = "Anything but empty string"
+    pdf_path = "Anything but empty string to allow inital entrance into while loop" 
     pdf_paths = []
+    default_file_open_path = f"C:\\Users\\{os.getlogin()}\\Documents\\"
 
     #If user hits cancel on dialog box then stop requesting.
     while pdf_path:
-        pdf_path = easygui.fileopenbox()
+        pdf_path = easygui.fileopenbox(msg="", title="Choose a PDF File", default=default_file_open_path)
 
         if pdf_path:
+            default_file_open_path = PDFToolsModule.GetParentDirectoryFromFilePath(pdf_path) + "\\" #set default directory to where last file was choosen.
             pdf_paths.append(pdf_path)
 
     merged_pdfs_folder_path = f"C:\\Users\\{os.getlogin()}\\Desktop\\Merged PDFs\\"
